@@ -49,15 +49,23 @@ function AddBlog() {
   };
 
   const handleChange = (event) => {
-    if (error) {
+    const { name, value } = event.target;
+    
       setError("");
-    }
-    if (event.target.name === "title") {
-      setBlog({ ...blog, title: event.target.value });
-    }
-    if (event.target.name === "body") {
-      setBlog({ ...blog, body: event.target.value });
-    }
+      setBlog((prevBlog) => ({
+        ...prevBlog,
+        [name]: value,
+      }))
+      
+    // if (error) {
+    //   setError("");
+    // }
+    // if (event.target.name === "title") {
+    //   setBlog({ ...blog, title: event.target.value });
+    // }
+    // if (event.target.name === "body") {
+    //   setBlog({ ...blog, body: event.target.value });
+    // }
       
   };
 
@@ -66,8 +74,11 @@ function AddBlog() {
       setPreview(URL.createObjectURL(event.target.files[0]) )  
   }
 
-  isAuthenticated(setIsLoggedIn);
-  waitToLoad(setLoading)   
+  React.useEffect(() => {
+    isAuthenticated(setIsLoggedIn);
+    waitToLoad(setLoading);
+  }, []);
+   
 
   return (
     <>
