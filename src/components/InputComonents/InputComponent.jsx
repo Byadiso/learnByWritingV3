@@ -18,7 +18,8 @@ const CustomInput = React.forwardRef(function CustomInput(props, ref) {
   );
 });
 
-export default function InputComponent(props) {
+// Here we wrap the InputComponent with React.memo
+const MemoizedInputComponent = React.memo(function InputComponent(props) {
   return (
     <CustomInput
       aria-label="Demo input"
@@ -27,7 +28,9 @@ export default function InputComponent(props) {
       onChange={props.handleChange}
     />
   );
-}
+});
+
+export default MemoizedInputComponent;
 
 const blue = {
   100: "#DAECFF",
