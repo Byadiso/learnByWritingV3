@@ -32,130 +32,135 @@ function Dashboard() {
   useEffect(() => {
     listBlog(setBlogList);
     isAuthenticated(setIsLoggedIn);
-    waitToLoad(setLoading)   
-    
+    waitToLoad(setLoading);
   }, [navigate, isLoggedIn]);
 
   return (
     <div>
       <Navbar />
-      <div style={{display:"flex", alignItems:"center"}}>
-      {isLoggedIn ? 
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid
-          container
-          spacing={{ xs: 2, md: 3 }}
-          columns={{ xs: 2, sm: 8, md: 12 }}
-        >
-          <Grid item xs={8} style={{ marginBottom: "70px" }}>
-            {blogList.length === 0 &&
-              blogNumber.map((blogskeletom, index) => (
-                <Paper
-                  key={index}
-                  sx={{
-                    p: 1,
-                    margin: "auto",
-                    maxWidth: 1000,
-                    flexGrow: 1,
-                    backgroundColor: (theme) =>
-                      theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-                  }}
-                >
-                  <Grid container spacing={1}>
-                    <Grid item xs={12}>
-                      <SkeletonDashboard key={index} />
-                    </Grid>
-                  </Grid>
-                </Paper>
-              ))}
-            {blogList &&
-              blogList.map((blog, index) => (
-                <Card
-                  sx={{
-                    p: 1,
-                    margin: "20px",
-                    maxWidth: 1000,
-                    flexGrow: 1,
-                    backgroundColor: (theme) =>
-                      theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-                  }}
-                  key={index}
-                >
-                  <Grid container spacing={2} key={index}>
-                    <Grid item xs={4}>
-                      <ButtonBase
-                        sx={{ width: 100, height: 100, borderRadius: "50%" }}
-                      >
-                        <Img alt="image-blog" src={blog.Image} />
-                      </ButtonBase>
-                    </Grid>
-                    <Grid item xs={8} sm container>
-                      <Grid
-                        item
-                        xs={8}
-                        container
-                        direction="column"
-                        spacing={1}
-                      >
-                        <Grid item xs={6}>
-                          <Typography gutterBottom variant="h6" component="div">
-                            {blog.title}
-                          </Typography>
-
-                          <Grid
-                            item
-                            xs={12}
-                            style={{
-                              display: "flex",
-                              justifyContent: "center",
+      <div style={{ display: "flex", alignItems: "center" }}>
+        {isLoggedIn ? (
+          <Box sx={{ flexGrow: 1 }}>
+            <Grid
+              container
+              spacing={{ xs: 2, md: 3 }}
+              columns={{ xs: 2, sm: 8, md: 12 }}
+            >
+              <Grid item xs={8} style={{ marginBottom: "70px" }}>
+                {blogList.length === 0 &&
+                  blogNumber.map((blogskeletom, index) => (
+                    <Paper
+                      key={index}
+                      sx={{
+                        p: 1,
+                        margin: "auto",
+                        maxWidth: 1000,
+                        flexGrow: 1,
+                        backgroundColor: (theme) =>
+                          theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+                      }}
+                    >
+                      <Grid container spacing={1}>
+                        <Grid item xs={12}>
+                          <SkeletonDashboard key={index} />
+                        </Grid>
+                      </Grid>
+                    </Paper>
+                  ))}
+                {blogList &&
+                  blogList.map((blog, index) => (
+                    <Card
+                      sx={{
+                        p: 1,
+                        margin: "20px",
+                        maxWidth: 1000,
+                        flexGrow: 1,
+                        backgroundColor: (theme) =>
+                          theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+                      }}
+                      key={index}
+                    >
+                      <Grid container spacing={2} key={index}>
+                        <Grid item xs={4}>
+                          <ButtonBase
+                            sx={{
+                              width: 100,
+                              height: 100,
+                              borderRadius: "50%",
                             }}
                           >
-                            <DeleteModal id={blog.id} />
-                            <EditForm id={blog.id} />
+                            <Img alt="image-blog" src={blog.Image} />
+                          </ButtonBase>
+                        </Grid>
+                        <Grid item xs={8} sm container>
+                          <Grid
+                            item
+                            xs={8}
+                            container
+                            direction="column"
+                            spacing={1}
+                          >
+                            <Grid item xs={6}>
+                              <Typography
+                                gutterBottom
+                                variant="h6"
+                                component="div"
+                              >
+                                {blog.title}
+                              </Typography>
+
+                              <Grid
+                                item
+                                xs={12}
+                                style={{
+                                  display: "flex",
+                                  justifyContent: "center",
+                                }}
+                              >
+                                <DeleteModal id={blog.id} />
+                                <EditForm id={blog.id} />
+                              </Grid>
+                            </Grid>
                           </Grid>
                         </Grid>
                       </Grid>
-                    </Grid>
-                  </Grid>
-                </Card>
-              ))}
-          </Grid>
+                    </Card>
+                  ))}
+              </Grid>
 
-          <Grid item xs={3}>
-            <div className="dashboard_item_left">
-              <div className="dashboard_item">
-                <div className="dashboard_search">
-                  <input type="text" placeholder="Search.." name="search" />
-                  <i className="fa fa-search"></i>
-                </div>
-                <div className="dashboard_categories">
-                  <h1>Dashboard</h1>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <CreateBlog /> <p>Add a blog</p>
+              <Grid item xs={3}>
+                <div className="dashboard_item_left">
+                  <div className="dashboard_item">
+                    <div className="dashboard_search">
+                      <input type="text" placeholder="Search.." name="search" />
+                      <i className="fa fa-search"></i>
+                    </div>
+                    <div className="dashboard_categories">
+                      <h1>Dashboard</h1>
+
+                      <Link to="/Add_blog" id="info">
+                        <i className="fa fa-info"></i>Add a blog
+                      </Link>
+
+                      <Link to="/User" id="info">
+                        <i className="fa fa-info"></i>My info
+                      </Link>
+                      <Link to="/vocabulary" id="members">
+                        <i className="fa-solid fa-floppy-disk"></i>Your
+                        Vocabulary
+                      </Link>
+                      <Link to="/Settings" id="settings">
+                        <i className="fa fa-gear"></i>Settings
+                      </Link>
+                    </div>
                   </div>
-
-                  <Link to="/User" id="info">
-                    <i className="fa fa-info"></i>My info
-                  </Link>
-                  <Link to="/vocabulary" id="members">
-                    <i className="fa-solid fa-floppy-disk"></i>Your Vocabulary
-                  </Link>
-                  <Link to="/Settings" id="settings">
-                    <i className="fa fa-gear"></i>Settings
-                  </Link>
                 </div>
-              </div>
-            </div>
-          </Grid>
-        </Grid>
-      </Box>
-      : !loading && <NoAccess />}
+              </Grid>
+            </Grid>
+          </Box>
+        ) : (
+          !loading && <NoAccess />
+        )}
       </div>
       <Footer />
     </div>

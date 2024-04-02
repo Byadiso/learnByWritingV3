@@ -11,6 +11,7 @@ import { isAuthenticated } from "../firebase/Authentication";
 // import { useNavigate } from "react-router-dom";
 import { ValidateBlog, waitToLoad } from "../firebase/Helpers";
 import NoAccess from "./NoAccess";
+import { useNavigate } from "react-router-dom";
 
 function AddBlog() {
   // const [isCreated, setIsCreated] = useState(false);  
@@ -18,33 +19,18 @@ function AddBlog() {
   const [errorMessage, setErrorMessage] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [blog, setBlog] = useState({});
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 
-  const style = {
-    position: "absolute",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "start  ",
-    flexDirection: "column",
-    paddingBottom:"50px",
-    marginTop:"20px",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 500,
-    bgcolor: "background.paper",
-    p: 4,
-  };
-
+  
   const handleOnClick = () => {   
-    ValidateBlog(blog,setErrorMessage);
-    console.log(errorMessage === null);
+    ValidateBlog(blog,setErrorMessage);   
     if(errorMessage === null){
       createBlog(blog)   
+      navigate('/Blogs')
     }     
   };
 
@@ -56,16 +42,7 @@ function AddBlog() {
         ...prevBlog,
         [name]: value,
       }))
-      
-    // if (error) {
-    //   setError("");
-    // }
-    // if (event.target.name === "title") {
-    //   setBlog({ ...blog, title: event.target.value });
-    // }
-    // if (event.target.name === "body") {
-    //   setBlog({ ...blog, body: event.target.value });
-    // }
+         
       
   };
 
