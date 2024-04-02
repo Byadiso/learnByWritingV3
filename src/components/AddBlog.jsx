@@ -86,7 +86,7 @@ function AddBlog() {
       <div style={{display:"flex", alignItems:"center"}}>
       {isLoggedIn ? 
 
-      <div style={style} className="Add_blog_container">
+      <div className="Add_blog_container">
         <h2 style={{ color: "#4A4D4E", marginBottom: "50px" }}>
           Create Your Awesome Blog!{" "}
         </h2>

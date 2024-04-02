@@ -463,6 +463,30 @@ section {
     margin-left: 20px;
 }
 
+
+/* add blog */
+
+.Add_blog_container{
+
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    padding-bottom:50px;
+    margin-top:20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500;
+    /* background-color: background.paper;
+    p: 4; */
+}
+
+    
+
+
+
 /* footer */
 footer .copyright {
     display: flex;
@@ -588,9 +612,10 @@ footer .copyright {
 
     .Add_blog_container {
         top: 60%;
-        left: 70%;
-        margin-top: 75px;
-        padding-bottom: 20px;
+        left: 50%;
+        margin-top: 180px;
+        margin-bottom: 250px;
+        padding-bottom: 150px;
     }
 
 
