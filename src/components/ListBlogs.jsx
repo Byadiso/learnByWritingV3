@@ -24,6 +24,8 @@ function ListBlogs() {
 
   let blogNumber = ["1", "2", "3", "4", "5", "6"];
 
+  const sortedBlogs = blogList.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+
   useEffect(() => {
     listBlog(setBlogList);
     isAuthenticated(setIsLoggedIn);
@@ -52,7 +54,7 @@ function ListBlogs() {
             ))}
           {/* {error && <NoConnection errorMessage={error}/>} */}
           { isLoggedIn ? blogList &&
-            blogList.map((blog, index) => (
+            sortedBlogs.map((blog, index) => (
               <Grid item xs={4} sm={4} md={4} key={index} >
                 <BlogBLock
                   key={index}

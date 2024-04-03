@@ -22,6 +22,8 @@ function Dashboard() {
 
   let blogNumber = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
+  const sortedBlogs = blogList.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+
   const Img = styled("img")({
     margin: "auto",
     display: "block",
@@ -68,7 +70,7 @@ function Dashboard() {
                     </Paper>
                   ))}
                 {blogList &&
-                  blogList.map((blog, index) => (
+                  sortedBlogs.map((blog, index) => (
                     <Card
                       sx={{
                         p: 1,
