@@ -5,10 +5,14 @@ import { getDatabase } from "firebase/database";
 import 'firebase/firestore';
 import { getStorage } from "firebase/storage";
 import { FIREBASE_API_KEY } from "./ApiKey";
+// import dotenv from 'dotenv'
+
+
+// dotenv.config();
 
 
 const firebaseConfig = {
-  apiKey: process.env.API_KEY || FIREBASE_API_KEY,
+  apiKey: process.env.FIREBASE_API_KEY || FIREBASE_API_KEY,
   authDomain: "mybrand-df7b7.firebaseapp.com",
   databaseURL: "https://mybrand-df7b7-default-rtdb.firebaseio.com",
   projectId: "mybrand-df7b7",
