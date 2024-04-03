@@ -8,6 +8,7 @@ import EditNoteIcon from "@mui/icons-material/EditNote";
 import { listBlog } from "../firebase/getBlogs";
 import InputFileUpload from "./InputComonents/FileUpload";
 import { editBlog } from "../firebase/createBlog";
+import "../Style/Dashboard.css";
 
 export default function EditForm(props) {
   const [blogs, setBlogList] = useState([]);
@@ -60,18 +61,7 @@ export default function EditForm(props) {
     setPreview(URL.createObjectURL(e.target.files[0]) )
   };
 
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 500,
-    bgcolor: "background.paper",
-    border: "1px solid grey",
-    padding: "10px",
-    boxShadow: 24,
-    p: 4,
-  };
+  
   useEffect(() => {
     listBlog(setBlogList);
   }, []);
@@ -88,7 +78,7 @@ export default function EditForm(props) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box className="edit_container">
           <Typography id="modal-modal-title" sx={{ mt: 2 }}>
             {isUpdated
               ? "Your blog post has been updated successfully!"
@@ -119,6 +109,7 @@ export default function EditForm(props) {
               />
             </>
           )}
+          <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
           {!isUpdated && (
             <InputFileUpload handleChange={(e) => handleFileChange(e)} />
           )}
@@ -141,6 +132,7 @@ export default function EditForm(props) {
               Return
             </Button>
           )}
+          </div>
         </Box>
       </Modal>
     </div>
