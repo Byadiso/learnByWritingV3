@@ -2,7 +2,7 @@
 
 
 #file to not be updated
-apikey.js
+ApiKey.js
 
 # dependencies
 /node_modules

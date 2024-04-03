@@ -4,10 +4,11 @@ import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 import 'firebase/firestore';
 import { getStorage } from "firebase/storage";
+import { FIREBASE_API_KEY } from "./ApiKey";
 
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyA5sPlupW_n1XEt6xsw_Y7aAZKltGEFyXw',
+  apiKey: process.env.API_KEY || FIREBASE_API_KEY,
   authDomain: "mybrand-df7b7.firebaseapp.com",
   databaseURL: "https://mybrand-df7b7-default-rtdb.firebaseio.com",
   projectId: "mybrand-df7b7",
