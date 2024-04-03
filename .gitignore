@@ -2,7 +2,7 @@
 
 
 #file to not be updated
-ApiKey.js
+/src/firebase/ApiKey.js
 
 # dependencies
 /node_modules
