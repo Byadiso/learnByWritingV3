@@ -31,7 +31,9 @@ function AddBlog() {
     if(errorMessage === null){
       createBlog(blog)   
       navigate('/Blogs')
-    }     
+    } else {
+      console.log("we are having an error in creating blog")
+    }    
   };
 
   const handleChange = (event) => {
@@ -50,6 +52,8 @@ function AddBlog() {
       setBlog({ ...blog, image: event.target.files[0] });
       setPreview(URL.createObjectURL(event.target.files[0]) )  
   }
+
+  console.log(blog) // for checking why blog are not being created
 
   React.useEffect(() => {
     isAuthenticated(setIsLoggedIn);

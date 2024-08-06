@@ -52,6 +52,7 @@ function LandingPage() {
     isAuthenticated(setIsLoggedIn);
     Stories();
   }, []);
+  
   return (
     <div>
       <Navbar />

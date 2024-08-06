@@ -37,6 +37,7 @@ export const createBlog = async (blog) => {
 
     // Wait for the upload to complete and get the download URL
     const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+    console.log(downloadURL)
 
     // Generate a unique random ID (consider using a more robust method like UUID)
     const id = Math.floor(Math.random() * 1000000); // 6-digit random number
